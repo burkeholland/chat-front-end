@@ -31,8 +31,7 @@ export default function Home() {
 
       const completion = await getCompletion(updatedMessages);
 
-      updatedMessages = [...updatedMessages, { content: completion, role: "assistant" }];
-      setChatMessages(updatedMessages);
+      setChatMessages([...updatedMessages, { content: completion, role: "assistant" }]);
 
       setActiveMessage("");
 
@@ -42,7 +41,7 @@ export default function Home() {
   };
 
   const startNewChat = () => {
-    setMessages([]);
+    setChatMessages([]);
   };
 
   const getCompletion = async (messages) => {
