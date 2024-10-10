@@ -27,13 +27,13 @@ export default function Home() {
       const newMessage = { content: activeMessage, role: "user" };
       let updatedMessages = [...chatMessages, newMessage];
 
+      setActiveMessage("");
+
       setChatMessages(updatedMessages);
 
       const completion = await getCompletion(updatedMessages);
 
       setChatMessages([...updatedMessages, { content: completion, role: "assistant" }]);
-
-      setActiveMessage("");
 
     } catch (e) {
       console.log(e);
