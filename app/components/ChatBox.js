@@ -21,6 +21,17 @@ export default function ChatBox({
             className={styles.textarea}
             value={activeMessage}
             onChange={handleChange}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                if (e.ctrlKey || e.metaKey) {
+                  // Add a new line to the text area
+                  setActiveMessage(`${activeMessage}\n`);
+                } else {
+                  e.preventDefault();
+                  handleClick();
+                }
+              }
+            }}
           ></textarea>
         </div>
         <div className="column is-narrow is-flex is-flex-direction-column is-justify-content-flex-end">

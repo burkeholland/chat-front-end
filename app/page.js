@@ -27,12 +27,16 @@ export default function Home() {
       const newMessage = { content: activeMessage, role: "user" };
       let updatedMessages = [...chatMessages, newMessage];
 
+      // Clear the active message
       setActiveMessage("");
 
+      // Update the state with the new user message
       setChatMessages(updatedMessages);
 
+      // Get the assistant's response
       const completion = await getCompletion(updatedMessages);
 
+      // Update the state with the assistant's response
       setChatMessages([...updatedMessages, { content: completion, role: "assistant" }]);
 
     } catch (e) {
@@ -45,6 +49,7 @@ export default function Home() {
   };
 
   const getCompletion = async (messages) => {
+    // add the messages to the request object
     chatRequest.messages = messages;
 
     const response = await fetch(
@@ -76,11 +81,13 @@ export default function Home() {
               ))}
             </div>
             <footer>
-              <ChatBox
-                activeMessage={activeMessage}
-                setActiveMessage={setActiveMessage}
-                handleSendButtonClick={createNewMessage}
-              ></ChatBox>
+              <div className="container is-max-desktop">
+                <ChatBox
+                  activeMessage={activeMessage}
+                  setActiveMessage={setActiveMessage}
+                  handleSendButtonClick={createNewMessage}
+                ></ChatBox>
+              </div>
             </footer>
           </div>
         </div>

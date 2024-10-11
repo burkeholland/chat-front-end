@@ -11,25 +11,6 @@ footer {
     z-index: 1;
 }
 
-@media screen and (min-width: 768px) {
-    #thread {
-        margin-bottom: 175px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    #thread {
-        margin-bottom: 240px;
-    }
-}
-
-#newChat {
-    border: 1px solid #fff;
-    background-color: inherit;
-}
-
-.button.is-success.is-inverted.is-outlined:hover {
-    /* background-color: #fff; */
-    color: inherit;
-    background-color: inherit;
+#thread {
+    padding-bottom: 230px;
 }
